@@ -1,7 +1,9 @@
-const router = require("express").Router();
-const workoutRoutes = require("./workouts");
+module.exports = (mongoose) => {
+    const router = require("express").Router();
+    const workoutRoutes = require("./workouts")(mongoose);
 
-// API routes: api/
-router.use("/workouts", workoutRoutes);
+    // API routes: api/
+    router.use("/workouts", workoutRoutes);
 
-module.exports = router;
+    return router;
+}
