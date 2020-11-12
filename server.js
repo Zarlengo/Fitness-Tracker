@@ -1,7 +1,6 @@
 const express = require("express");
 
 const mongoose = require("mongoose");
-const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -9,7 +8,6 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
@@ -20,9 +18,12 @@ mongoose.connect(
     useCreateIndex: true,
     useFindAndModify: false
   }
-);
-
-// Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+).then(() => {
+  const routes = require("./routes")(mongoose);
+  app.use(routes);
+  console.log('Database is connected');
+  // Start the API server
+  app.listen(PORT, function() {
+    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+  });
 });
