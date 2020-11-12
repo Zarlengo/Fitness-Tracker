@@ -1,6 +1,8 @@
 # Fitness Tracker
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
+[Live Site - https://zar-workout.herokuapp.com/](https://zar-workout.herokuapp.com/)
+
 ## Description
 A node.js based Express and MongoDB app to track daily workouts and provide a summary for the last week of exercises.
 
