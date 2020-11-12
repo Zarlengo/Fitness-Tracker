@@ -18,7 +18,6 @@ module.exports = (mongoose) => {
     Workout.find({})
       .sort({ day: 1 })
       .then(dbWorkout => {
-        console.log(dbWorkout);
         res.json(dbWorkout);
       })
       .catch(err => {
@@ -59,7 +58,6 @@ module.exports = (mongoose) => {
     Workout.find({})
       .where("day").gte(lowerRange)
       .then(dbWorkout => {
-        console.log(dbWorkout);
         res.json(dbWorkout);
       })
       .catch(err => {
